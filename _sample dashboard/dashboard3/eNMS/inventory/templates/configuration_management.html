@@ -1,0 +1,224 @@
+{% extends "base_site.html" %}
+
+{% block title %} Device Management {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='difflib/diffview.css') }}" rel="stylesheet">
+  <style>
+    #main { height:90vh; }
+    @media (min-width: 1000px) {
+      .modal-lg {
+        width: 1200px;
+      }
+    }
+  </style>
+{% endblock stylesheets %}
+
+{% block content %}
+  <div id="poller-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title">Configure and Start Polling</h4>
+        </div>
+        <form id="configure-poller-form" data-parsley-validate class="form-horizontal form-label-left" method="post" autocomplete="off">
+          <div class="modal-body">
+            <div class="form-group">
+              {% for field in poller_form %}
+                {% if field.widget.input_type == 'hidden' %}
+                  {{ field() }}
+                {% else %}
+                  <label class="control-label col-md-2 col-sm-2 col-xs-12">{{ field.label }}</label>
+                  <div class="col-md-10 col-sm-10 col-xs-12">
+                    {{ field(class="form-control") }}
+                  </div><br><br><br>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" onclick="configurePoller()">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="search-configurations-modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title">Search in Configurations</h4>
+        </div>
+        <form id="search-configurations-form" data-parsley-validate class="form-horizontal form-label-left" method="post" autocomplete="off">
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Search Text:</label>
+              {{ search_configurations_form.search_text(class="form-control required") }}<br>
+              <div class="item">
+                {{ search_configurations_form.regular_expression() }}
+                <label>Regular expression</label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" value="current" name="config-to-search">
+                  Search only current configuration
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" value="all" name="config-to-search">
+                  Search in all configurations
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" onclick="searchConfigurations()">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="configurations-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title">Configurations</h4>
+        </div>
+        <div class="modal-body">
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Display :</label>
+          <div class="col-md-10 col-sm-10 col-xs-12">
+            {{ compare_configurations_form.display(class="form-control") }}
+          </div>
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Compare With :</label>
+          <div class="col-md-10 col-sm-10 col-xs-12">
+            {{ compare_configurations_form.compare_with(class="form-control") }}
+          </div>
+          <hr><hr><hr><hr>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+            <pre id="configurations"></pre>
+            </div>
+          </div>
+          <button class="btn btn-default btn-file" onclick="showRawLogs()" style="width:100%;">
+            Raw logs
+          </button>
+          <button class="btn btn-default btn-file" onclick="clearConfigurations()" style="width:100%;">
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="edit-device" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="title-device"></h4>
+        </div>
+        <div class="modal-body">
+          <form id="edit-device-form" data-parsley-validate class="form-horizontal form-label-left" method="post" autocomplete="off">
+            <div class="modal-body">
+              <div class="form-group">
+                {% for field in configuration_parameters_form %}
+                  {% if field.widget.input_type == 'hidden' %}
+                    {{ field(id='device-' + field.name) }}
+                  {% else %}
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">{{ field.label }}</label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                      {{ field(id='device-' + field.name, class="form-control") }}
+                    </div><br><br>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success" onclick="processData('device')">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right_col" role="main">
+    <!-- begin row -->
+    <div class="row">
+      <!-- begin column -->
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel" style="min-height: 90vh">
+          <div style="min-height:90vh;" class="x_content">
+            <div class="panel-group">
+              <div style="padding-bottom:5px;">
+                <button class="btn btn-default btn-file" onclick="showModal('poller-modal')" style="width:100%;">
+                  Configure and Start Pooler
+                </button>
+              </div>
+              <div style="padding-bottom:5px;">
+                <button class="btn btn-default btn-file" onclick="showModal('search-configurations-modal')" style="width:100%;">
+                  Search in Configurations
+                </button>
+              </div>
+              <div style="padding-bottom:5px;">
+                <button class="btn btn-default btn-file" onclick="undoFilter()" style="width:100%;">
+                  Undo Filter
+                </button>
+              </div>
+            </div>
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Existing Devices</h3>
+              </div>
+            </div>
+            <table id="table" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th style="width: 10%">Name</th>
+                  <th style="width: 40%">Command to display the configuration</th>
+                  <th style="width: 10%">Last failure</th>
+                  <th style="width: 10%">Last runtime</th>
+                  <th style="width: 10%">Last update</th>
+                  <th style="width: 10%">Last status</th>
+                  <th style="width: 5%">Configuration</th>
+                  <th style="width: 5%">Parameters</th>
+                  <th style="width: 5%">Download</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- end column -->
+    </div>
+    <!-- end row -->
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+  <script>
+    const propertyTypes = {{ property_types|tojson|safe }};
+    var fields = {{ fields|tojson|safe }};
+    var devices = {{ devices|tojson|safe }};
+  </script>
+  <!-- Difflib -->
+  <script src="{{ url_for('static', filename='difflib/diffview.min.js') }}"></script>
+  <script src="{{ url_for('inventory_blueprint.static', filename='objectCommonFunctions.js') }}"></script>
+  <script src="{{ url_for('inventory_blueprint.static', filename='configurationManagement.js') }}"></script>
+{% endblock javascripts %}

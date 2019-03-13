@@ -1,0 +1,178 @@
+
+{% extends "base_site.html" %}
+
+{% block title %} Asset {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" type="text/css"/>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3>Portfolio - Assets</h3>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>Asset List</h2>`
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                </ul>
+                <ul class="nav nav-pills pull-right">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" id="new">New</button>
+                </ul>
+                <div class="clearfix">
+                </div>
+
+              </div>
+              <div class="x_content">
+                    <table id="datatables" class="display" width=100%>
+                        <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Property</th>
+                              <th>Lender</th>
+                              <th>Loan Type</th>
+                              <th>Rate Type</th>
+                              <th>Index</th>
+                              <th>Index Rate</th>
+                              <th>Index Spread</th>
+                              <th>Interest Rate (Initial)</th>
+                              <th>Funding Date</th>
+                              <th>Maturity Date</th>
+                              <th>Funding Amount</th>                              
+                              <th>action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                          <tr>
+                  
+                          </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW and EDIT Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="modal_title"></h4>
+              </div>
+              <div class="modal-body">
+                  <form role="form">
+                    {{ form.hidden_tag() }}
+                      <div class="form-group">
+                          <label for="property"><span class="glyphicon glyphicon-pencil"></span> Property</label>
+                          <input type="text" class="form-control" id="property" name="property" placeholder="Property"
+                                 required="true">
+                      </div>
+                      <div class="form-group">
+                          <label for="lender"><span class="glyphicon glyphicon-file"></span> Lender</label>
+                          <input type="text" class="form-control" id="lender" name="lender"
+                                 placeholder="Enter Lender" required="true">
+                      </div>
+                      <div class="form-group">
+                        <label for="loantype"><span class="glyphicon glyphicon-file"></span> Loan Type</label>
+                        <input type="text" class="form-control" id="loantype" name="loantype"
+                               placeholder="" required="true">
+                      </div>
+                      <div class="form-group">
+                        <label for="ratetype"><span class="glyphicon glyphicon-file"></span> ratetype</label>
+                        <input type="text" class="form-control" id="ratetype" name="ratetype"
+                               placeholder="" required="true">
+                      </div>
+                      <div class="form-group">
+                        <label for="index"><span class="glyphicon glyphicon-file"></span> index</label>
+                        <input type="text" class="form-control" id="index" name="index"
+                               placeholder="" required="true">
+                      </div>
+                      <div class="form-group">
+                        <label for="indexrate"><span class="glyphicon glyphicon-file"></span> indexrate</label>
+                        <input type="number" class="form-control" id="indexrate" name="indexrate"
+                               placeholder="" required="true" step="any">
+                      </div>
+                      <div class="form-group">
+                        <label for="indexspread"><span class="glyphicon glyphicon-file"></span> indexspread</label>
+                        <input type="number" class="form-control" id="indexspread" name="indexspread"
+                               placeholder="" required="true" step="any">
+                      </div>
+                      <div class="form-group">
+                        <label for="interestrate_initial"><span class="glyphicon glyphicon-file"></span> interestrate_initial</label>
+                        <input type="number" class="form-control" id="interestrate_initial" name="interestrate_initial"
+                               placeholder="" required="true" step="any">
+                      </div>
+                      <div class="form-group">
+                        <label for="date_funding"><span class="glyphicon glyphicon-file"></span> date_funding</label>
+                        <input type="date" class="form-control" id="date_funding" name="date_funding"
+                               placeholder="" required="true" >
+                      </div>
+                      <div class="form-group">
+                        <label for="date_maturityinitial"><span class="glyphicon glyphicon-file"></span> date_maturityinitial</label>
+                        <input type="date" class="form-control" id="date_maturityinitial" name="date_maturityinitial"
+                               placeholder="" required="true">
+                      </div>                                                                  
+                      <div class="form-group">
+                        <label for="funding_total"><span class="glyphicon glyphicon-file"></span> funding_total</label>
+                        <input type="text" class="form-control" id="funding_total" name="funding_total"
+                               placeholder="" required="true" step="any">
+                      </div>                                         
+
+                      <input type="hidden" id="type" name="type" value="">
+                      <button type="submit" class="btn btn-success btn-block"><span
+                              class="glyphicon glyphicon-ok"></span> OK
+                      </button>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="confirm" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Are you sure?</h4>
+              </div>
+              <div class="modal-body">
+                  <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+                  <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(function() {
+        new AutoNumeric('#funding_total', {unformatOnSubmit: true});
+    });        
+    
+  </script>
+  <script src="{{ url_for('static', filename='build/js/editAsset.js') }}"></script>
+  
+{% endblock javascripts %}
+

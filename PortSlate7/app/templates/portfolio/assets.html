@@ -1,0 +1,189 @@
+{% extends "base_site.html" %}
+
+{% block title %} Assets {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Current Investments </h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <p class="text-muted font-13 m-b-30">
+              </p>
+              <!-- <table id="datatable-buttons" class="table table-striped table-bordered"> -->
+              <table id="datatable-buttons" class="table">                
+                <thead>
+                  <tr>
+                    <th width=4%>Assets</th>
+                    <th></th>
+                    <th>Asset Type</th>
+                    <th>Acquisition Date</th>
+                    <th>Sqft/Units</th>
+                    <th>Occupancy (%)</th>
+                    <th>Cost ($) </th>
+                    <th>GAV ($) </th>
+                    <th>NAV ($) </th>
+                    <th>Loan Balance ($) </th>
+                    <th>LTV (%) </th>
+                    <th>Interest Rate (%) </th>
+                    <th>Fixed / Floating </th>
+                    <th>Maturity </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="../static/images/mf1.jpg" width=100%></img></td>
+                    <td><a href="./asset"><b>Lakeshore Pearl</b><br>Austin,TX, USA</a></td>
+                    <td>Multifamily</td>
+                    <td>Feb-2018</td>
+                    <td>200</td>
+                    <td>93%</td>
+                    <td>$40m</td>
+                    <td>$45m</td>
+                    <td>$14m</td>
+                    <td>$31m</td>
+                    <td>67%</td>
+                    <td>5.3%</td>
+                    <td>Floating (L+2.95%)</td>
+                    <td>Mar-2020</td>
+                  </tr>
+                  <tr>
+                      <td><img src="../static/images/mf2.jpg"  width=100%></img></td>
+                      <td><b>4400 Syracuse</b><br>Denver, CO, USA</td>
+                      <td>Multifamily</td>
+                      <td>Oct-2018</td>
+                      <td>300</td>
+                      <td>90%</td>
+                      <td>$3m</td>
+                      <td>$10m</td>
+                      <td>$10m</td>
+                      <td>$0m</td>
+                      <td>0%</td>
+                      <td>n/a</td>
+                      <td>Floating (L+2.45%)</td>
+                      <td>Oct-2022</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../static/images/office1.jpg" width=100%></img></td>
+                        <td><b>100 N Wacker</b><br>Chicago, IL, USA</td>
+                        <td>Office</td>
+                        <td>Jan-2017</td>
+                        <td>550,000</td>
+                        <td>51%</td>
+                        <td>$186m</td>
+                        <td>$180m</td>
+                        <td>$66m</td>
+                        <td>$114m</td>
+                        <td>63%</td>
+                        <td>6.2%</td>
+                        <td>Floating (L+3.75%)</td>
+                        <td>Feb-2021</td>
+                      </tr>
+                      <tr>
+                          <td><img src="../static/images/office2.jpg" width=100%></img></td>
+                          <td><b>20 Post Office Square</b><br>Boston, MA, USA</td>
+                          <td>Office</td>
+                          <td>Mar-2017</td>
+                          <td>443,000</td>
+                          <td>99%</td>
+                          <td>$195m</td>
+                          <td>$240m</td>
+                          <td>$129m</td>
+                          <td>$124m</td>
+                          <td>51%</td>
+                          <td>4.7%</td>
+                          <td>Floating (L+2.35%)</td>
+                          <td>Mar-2022</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../static/images/retail1.jpg" width=100%></img></td>
+                            <td><b>Time Out Market</b><br>Chicago, IL, USA</td>
+                            <td>Retail</td>
+                            <td>Oct-2016</td>
+                            <td>49,000</td>
+                            <td>100%</td>
+                            <td>$24m</td>
+                            <td>$23m</td>
+                            <td>$14.3m</td>
+                            <td>$9.5m</td>
+                            <td>40%</td>
+                            <td>5.1%</td>
+                            <td>Floating (L+2.75%)</td>
+                            <td>Dec-2020</td>
+                          </tr>                                           
+                          <tr>
+                              <td><img src="../static/images/retail2.jpg" width=100%></img></td>
+                              <td><b>RH Buckhead</b><br>Atlanta, GA, USA</td>
+                              <td>Retail</td>
+                              <td>Oct-2017</td>
+                              <td>70,000</td>
+                              <td>100%</td>
+                              <td>$33m</td>
+                              <td>$34m</td>
+                              <td>$13m</td>
+                              <td>$21m</td>
+                              <td>63%</td>
+                              <td>3.9%</td>
+                              <td>Floating (L+1.60%)</td>
+                              <td>Nov-2021</td>
+                            </tr>                             
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+  <!-- Datatables -->
+  <script src="{{ url_for('static', filename='vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/jszip/dist/jszip.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/pdfmake/build/vfs_fonts.js') }}"></script>
+{% endblock javascripts %}

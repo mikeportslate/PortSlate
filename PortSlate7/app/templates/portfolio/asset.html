@@ -1,0 +1,589 @@
+{% extends "base_site.html" %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+       
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h3>Lakeshore Pearl</h3>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="col-xs-1">
+                <!-- required for floating -->
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-left">
+                  <li><a href="#property" data-toggle="tab">Property</a>
+                  </li>
+                  <li><a href="#financial" data-toggle="tab">Financials</a>
+                  </li>
+                  <li><a href="#rent" data-toggle="tab">Rent Roll</a>
+                  </li>                  
+                  <li><a href="#loan" data-toggle="tab">Loan Abstract</a>
+                  </li>
+                  <li><a href="#file" data-toggle="tab">Files</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-11">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="property">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Property Summary</th>
+                            </tr>                                
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="2"><img class="img-responsive avatar-view" src="../static/images/mf1.jpg" alt="Avatar">
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td><b>Location</b></td>
+                              <td align="right">Chicago, IL, USA</td>
+                            </tr>
+                            <tr>
+                              <td><b>Sector</b></td>
+                              <td align="right">Office</td>
+                            </tr>
+                            <tr>
+                              <td><b>Year Built</b></td>
+                              <td align="right">1996</td>
+                            </tr>
+                            <tr>
+                              <td><b>Size (Sqft or # of Units)</b></td>
+                              <td align="right">460,000</td>
+                            </tr>
+                            <tr>
+                              <td><b>Leased</b></td>
+                              <td align="right">46%</td>
+                            </tr>
+                            <tr>
+                              <td><b>Acquisition Date</b></td>
+                              <td align="right">January 20, 2017</td>
+                            </tr>
+                            <tr>
+                              <td><b>Investment Structure</b></td>
+                              <td align="right">JV</td>
+                            </tr>
+                            <tr>
+                              <td><b>Purchase Price</b></td>
+                              <td align="right">$100,000,000</td>
+                            </tr>
+                            <tr>
+                              <td><b>Current Value</b></td>
+                              <td align="right">$130,000,000</td>
+                            </tr>
+                            <tr>
+                              <td><b>Debt</b></td>
+                              <td align="right">$110,000,000</td>
+                            </tr>
+                            <tr>
+                              <td><b>Lender</b></td>
+                              <td align="right">Bank of America</td>
+                            </tr>
+    
+                          </tbody>
+                        </table>
+                    </div>                  
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <table class = "table">
+                          <thead>
+                            <tr><th>Investment Rationale</th></tr>
+                          </thead>
+                          <tbody>
+                            <td>
+                                Tower is a 449,000 sf office building located in downtown San Diego, CA. San Diego CBD office rents remain below long-term trend
+                                levels, signifying potential upside. The building has an excellent location at the connection of the
+                                traditional financial district and the Gaslamp residential and entertainment corridor. It is also on light rail
+                                that connects to nearby developing downtown neighborhoods. At acquisition, the property was 91%
+                                leased to twenty-seven tenants at approximately 14% below market rates, offering stable long term
+                                cash flow from an institutional quality tenant roster. With a purchase price at $273/sf and replacement
+                                cost estimate of $500/sf, this opportunity provides highly attractive relative value for Class A office
+                                product in a coastal CBD market at a significant discount to replacement cost. 
+                            </td>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <table class = "table">
+                          <thead>
+                            <tr><th>Investment Operations</th></tr>
+                          </thead>
+                          <tbody>
+                            <td>
+                                As of quarter-end, occupancy was 95%. During the quarter, we signed a 5-year 2,354 sf expansion
+                                with Parsons Environmental & Infrastructure Group.
+                                We have white-boxed and are actively marketing our one full floor vacancy and a 1,700 sf new prebuilt
+                                spec suite. We are planning to reorient the lobby and retail space, including the space to be
+                                vacated by Grab N' Go and Harold Stevens Jewelers, further activating the building lobby with a
+                                quality retail operator.
+                            </td>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="col-md-6 col-sm-6 col-xs-12" >
+                        <table class = "table">
+                          <thead>
+                            <tr><th>Investment Performance</th></tr>
+                          </thead>
+                          <tbody>
+                              <table class="table">
+                                <tr>
+                                  <td></td>
+                                  <td style="text-align:right;"><b>QTR</b></td>
+                                  <td style="text-align:right;"><b>1Y</b></td>
+                                  <td style="text-align:right;"><b>Since Inception</b></td>
+                                </tr>
+                                <tr>
+                                  <td >Income Return</td>
+                                  <td style="text-align:right;">1.2%</td>
+                                  <td style="text-align:right;">7.0%</td>
+                                  <td style="text-align:right;">8.8%</td>
+                                
+                                </tr>
+                                <tr>
+                                    <td>Appreciation</td>
+                                    <td style="text-align:right;">1.8%</td>
+                                    <td style="text-align:right;">9.4%</td>
+                                    <td style="text-align:right;">9.0%</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td style="text-align:right;">3.0%</td>
+                                    <td style="text-align:right;">16.4%</td>
+                                    <td style="text-align:right;">17.8%</td>
+                                </tr>
+                              </table>
+                          </tbody>
+                        </table>
+                      </div>                        
+                      <div class="col-md-6 col-sm-6 col-xs-12" >
+                        <table class = "table">
+                          <thead>
+                            <tr><th>Major Tenants</th></tr>
+                          </thead>
+                          <tbody>
+                              <table class="table">
+                                <tr>
+                                  <td></td>
+                                  <td style="text-align:right;"><b>Expiration</b></td>
+                                  <td style="text-align:right;"><b>RSF</b></td>
+                                  <td style="text-align:right;"><b>RSF (%)</b></td>
+                                </tr>
+                                <tr>
+                                  <td>Tenant A</td>
+                                  <td style="text-align:right;">Jan-22</td>
+                                  <td style="text-align:right;">130,000</td>
+                                  <td style="text-align:right;">29.7%</td>
+                                
+                                </tr>
+                                <tr>
+                                    <td>Tenant B</td>
+                                    <td style="text-align:right;">Nov-22</td>
+                                    <td style="text-align:right;">120,000</td>
+                                    <td style="text-align:right;">27.7%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tenant C</td>
+                                    <td style="text-align:right;">Nov-21</td>
+                                    <td style="text-align:right;">30,000</td>
+                                    <td style="text-align:right;">6.0%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tenant D</td>
+                                    <td style="text-align:right;">Jun-20</td>
+                                    <td style="text-align:right;">25,000</td>
+                                    <td style="text-align:right;">5.5%</td>
+                                </tr>
+                              </table>
+                          </tbody>
+                        </table>
+                      </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12" >
+                        <table class = "table">
+                          <thead>
+                            <tr><th>Lease Maturity Schedule</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="height: 300px">
+                                <canvas id="mybarChart2"></canvas>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>                        
+                    </div>                    
+                  </div>
+                  <div class="tab-pane" id="financial">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                      <ul id="finTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#fin_annual" role="tab" data-toggle="tab" aria-expanded="true">Annual</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#fin_month" role="tab" data-toggle="tab" aria-expanded="false">Monthly</a>
+                        </li>
+                      </ul>
+                      <div id="finTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="fin_annual">
+                          <img class="img-responsive avatar-view" src="../static/images/fin_annual.png" >
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="fin_month">
+                          <img class="img-responsive avatar-view" src="../static/images/fin_annual.png" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="rent">
+                      <img class="img-responsive avatar-view" src="../static/images/rentroll.png" >
+                  </div>
+                  <div class="tab-pane" id="loan">
+                    <div class="" role="tabpanel">
+                      <ul id="loanTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#loansummary" role="tab" data-toggle="tab" aria-expanded="true">Loan Contract</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#loanterms" role="tab" data-toggle="tab" aria-expanded="false">Key Terms</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#loancovenants" role="tab" data-toggle="tab" aria-expanded="false">Covenants</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#loanschedule" role="tab" data-toggle="tab" aria-expanded="false">Payment Schedule</a>
+                        </li>
+                      </ul>
+                      <div id="loanTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="loansummary">
+                            <div class="x_panel">
+                                <div class="x_content">
+                        
+                                  <div class="row form-group">
+                                      <label class="control-label col-md-1 col-sm-1 col-xs-1">Loan Name</label>
+                                      <div class="col-md-3 col-sm-3 col-xs-3">
+                                        <input type="text" class="form-control" value="1st Mortgate">
+                                      </div>
+                                      <label class="control-label col-md-1 col-sm-1 col-xs-1">Code</label>
+                                      <div class="col-md-3 col-sm-3 col-xs-3">
+                                        <input type="text" class="form-control" value="Lakeshore_1st">
+                                      </div>
+
+                                  </div>
+                                  <div class="row form-group">
+                                      <label class="control-label col-md-1 col-sm-1 col-xs-1">Loan Type</label>
+                                      <div class="col-md-3 col-sm-3 col-xs-3">
+                                        <select class="form-control">
+                                          <option>Senior Loan</option>
+                                          <option>Line of Credit</option>
+                                          <option>Junior Loan</option>
+                                          <option>Mezz Loan</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                                      </div>
+                          
+                                      <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+                                      </div>
+
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Lender</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="Bank of America">
+                                    </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Lender Code</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="BOA">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Broker</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="Loan Agent LLC">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Borrower</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="PortSlate Opportunity Fund VII">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Guarantor</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="PortSlate Inc">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Loan Summary</label>
+                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                        <textarea class="form-control" name="message" rows="6"></textarea>
+                                    </div>
+                                  </div>                                  
+                                </div>
+                              </div>                          
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="loanterms">
+                          <div class="x_panel">
+                              <div class="x_title">
+                                <h3>Principal</h3>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Currency</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="USD">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Gross Loan Amount ($)</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="$40,000,000">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Funding Date</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="01-Oct-2017">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Maturity Date</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="01-Nov-2021">
+                                    </div>
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Extention Date 1</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="01-Nov-2022">
+                                    </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Extention Fees </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="$50,000">
+                                    </div>
+                                    
+                                  </div>
+                                  <div class="row form-group">
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Extention Date 2</label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="01-Nov-2022">
+                                    </div>
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-1">Extention Fees </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                      <input type="text" class="form-control" value="$50,000">
+                                    </div>
+
+                                  </div>
+
+
+                              </div>
+                          </div>
+                          <div class="x_panel">
+                              <div class="x_title">
+                                <h3>Terms</h3>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Type of Loans</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="Floating Rate Notes">
+                                  </div>
+                                </div>
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Index Type</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="1-Month LIBOR">
+                                  </div>
+                                </div>
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Index Spread</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="300 bps">
+                                  </div>
+                                </div>
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Amortization</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="Yes">
+                                  </div>
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Method</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="30/360">
+                                  </div>
+
+                                </div>
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Interest Rate Cap (Year 1)</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="3.15%">
+                                  </div>
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Cap Provider</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="Bank 1">
+                                  </div>
+                                </div>
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Interest Rate Cap (Year 2)</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="4.15%">
+                                  </div>
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Cap Provider</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="Bank 1">
+                                  </div>
+                                </div>                              
+                                <div class="row form-group">
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Interest Rate Cap (Year 3)</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="5.15%">
+                                  </div>
+                                  <label class="control-label col-md-1 col-sm-1 col-xs-1">Cap Provider</label>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <input type="text" class="form-control" value="Bank 1">
+                                  </div>
+                                </div>
+
+                              </div>
+                          </div>
+                        
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="loancovenants">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                  <div class="x_title">
+                                    <h3>Financial Covenants</h3>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <div class="x_content">
+                                    <br />
+                                    <form id="finCovenants" class="form-horizontal form-label-right">
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="NOIdes">NOI Description
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <textarea id="NOIdes" required="required" class="form-control" name="message" rows="6">
+                                          </textarea>
+                                        </div>
+                                      </div>   
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LTV">LTV
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input type="text" id="LTV" required="required" class="form-control col-md-7 col-xs-12" value="29.5%">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LTVdes">LTV Description
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <textarea id="LTVdes" required="required" class="form-control" name="message" rows="6">The market value of existing properties and properties to be developed should be established in accordance with 12. CFR 34, subpart C.</textarea>
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="DSCR">DSCR
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <input type="text" id="DSCR" required="required" class="form-control col-md-7 col-xs-12" value="3.00">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="LTVdes">DSCR Description
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <textarea id="DSCRdes" required="required" class="form-control" name="message" rows="6"></textarea>
+                                        </div>
+                                      </div>                   
+                                    </form>
+                                  </div>
+                                </div>
+                                <div class="x_panel">
+                                  <div class="x_title">
+                                    <h3>Legal Covenants</h3>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <div class="x_content">
+                                    <br />
+                                    <form id="finCovenants" class="form-horizontal form-label-right">
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="NOIdes">Legal Covenant
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <textarea id="NOIdes" required="required" class="form-control" name="message" rows="6"></textarea>
+                                        </div>
+                                      </div>             
+                                    </form>
+                                  </div>
+                                </div>
+  
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="loanschedule">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="file">
+
+                  </div>
+                </div>
+              </div>
+                  
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+
+  <script>
+      var ctx = document.getElementById("mybarChart2");
+  
+      var config = {
+        type: 'bar',
+        data: {
+          labels: ['2019', '2020', '2021', '2022', '2023','2024'],
+          datasets: [{
+            label: '',
+            backgroundColor: "#26B99A",
+            data: [32000,27000,31000,273000,64000,120000]
+          }]
+        },
+        options: {
+          maintainAspectRatio: false,
+          responsive: true,
+          scales: {
+          yAxes: [{
+            ticks: {
+            beginAtZero: true
+            }
+          }]
+          }
+        }		
+      }
+      var mylineChart4 = new Chart(ctx, config);	
+  </script>
+
+{% endblock javascripts %}
+

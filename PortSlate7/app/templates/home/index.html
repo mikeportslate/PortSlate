@@ -1,0 +1,230 @@
+{% extends "base_site.html" %}
+
+{% block title %} Dashboard 1 {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row tile_count">
+      <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Gross Asset Value</span>
+        <div class="count" id="TopMarketValue"></div>
+        <span class="count_bottom"><i class="green">6% </i> From last Month</span>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Net Asset Value</span>
+        <div class="count" id="TopNAV"></div>
+        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>10% </i> From last Month</span>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Loan to Value</span>
+        <div class="count" id="TopLTV"></div>        
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Effective Interest Rate</span>
+        <div class="count" id="TopEffectiveRate"></div>
+        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>0% </i> From last Month</span>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Floating Rate %</span>
+        <div class="count" id="TopFloating"></div>        
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Average Maturity</span>
+        <div class="count" id="TopMaturity"></div>        
+      </div>
+    </div>
+    <!-- Top Row: NAV, LTV and DSCR -->
+    <div class="row">
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>Asset Value (Gross & Net) $mm <small></small></h3>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <canvas id="mylineChart2"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>LTV %<small></small></h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <canvas id="mylineChart3"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>DSCR<small></small></h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <canvas id="mylineChart4"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row#2: Interest Rate Summary -->    
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="x_panel">
+            <div class="x_title"><h3>Upcoming Action Required</h3></div>  
+            <div class="x_content">
+            <table class="table" id="EventTable">
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>Due Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Asset 1</b></td>
+                  <td>3/31/2019</td>
+                  <td>Quarterly Borrower Compliance</td>
+                </tr>
+                <tr>
+                  <td><b>Asset 3</b></td>
+                  <td>3/31/2019</td>
+                  <td>Quarterly Borrower Compliance</td>
+                </tr>
+                <tr>
+                  <td><b>Asset 5</b></td>
+                  <td>5/30/2019</td>
+                  <td>Notice for Loan Extension</td>
+                </tr>
+                <tr>
+                  <td><b>Asset 1</b></td>
+                  <td>6/30/2019</td>
+                  <td>Notice for Loan Extension</td>
+                </tr>
+                <tr>
+                  <td><b>Asset 3</b></td>
+                  <td>6/30/2019</td>
+                  <td>Notice for Loan Extension</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>       
+      <div class="col-md-9 col-sm-9 col-xs-9">
+        <div class = "x_panel">
+          <div class="x_title">
+            <h3>Interest Rate Summary</h3>
+          </div>  
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="clearfix"></div>
+              
+              <div class="x_content">
+                <table class="table" id="RateSummaryTable">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><b>Effective Rate (%)</b></td>
+                        <td><b></b></td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;Effective Fixed Rate (%) </td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;Effective Floating Rate (%)</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td><i>&nbsp;&nbsp;&nbsp;&nbsp;Average Floating Spread (bps)</i></td>
+                        <td><i></i></td>
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="x_content">
+                  <div style="height: 225px">
+                      <canvas id="mypieChart"></canvas>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>      
+           
+    </div>
+
+    <!-- Row#3: Maturity -->
+    <div class="row">
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>Loans By Maturity - Initial Terms <small>$mm</small></h3>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div style="height: 300px">
+              <canvas id="mybarChart2"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>Loans By Maturity - Extended Terms <small>$mm</small></h3>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div style="height: 300px">
+              <canvas id="mybarChart3"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+  <script src="{{ url_for('static', filename='vendors/Chart.js/dist/Chart.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/gauge.js/dist/gauge.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/skycons/skycons.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.pie.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.time.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.stack.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.resize.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/flot.orderbars/js/jquery.flot.orderBars.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/flot.curvedlines/curvedLines.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/DateJS/build/date.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/jqvmap/dist/jquery.vmap.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}"></script>
+  <script src="{{ url_for('static', filename='build/js/PortSlate.js') }}"></script>
+{% endblock javascripts %}
