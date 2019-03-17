@@ -195,8 +195,8 @@ def api_dashtimeseries():
 
     year=BarChartExt['Year'].max()
     years=list(range(year-4, year+3, 1))
-    MaturityInitial_json = {};
-    MaturityExt_json = {};
+    MaturityInitial_json = {}
+    MaturityExt_json = {}
 
     for i in years:
         row = {str(i): pd.to_numeric(BarChartInitial[BarChartInitial['Year']==i]['Balance_End'].sum())}
@@ -210,3 +210,15 @@ def api_dashtimeseries():
 
     
     return jsonify(Output_json)
+
+@blueprint.route('/portfolio/assets', methods=['GET', 'POST'])
+@login_required
+def api_portfolioassets():
+
+    conn = db.engine.connect()
+    data = pd.read_sql_query('select * from v_GetPortfolioAssets', conn)
+    data['ImgSrc']='<img src=\'..\static\images\\'''   + data['Img'] +'.png\'' + ' width=100%></img>'
+    data_json = data.to_json(orient='records',date_format='iso')
+    data_json=json.loads(data_json)
+
+    return jsonify({'data': data_json})

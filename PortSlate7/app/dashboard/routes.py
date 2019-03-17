@@ -8,11 +8,11 @@ from flask_login import (
 )
 
 from app import db, login_manager
-from app.home import blueprint
+from app.dashboard import blueprint
 
 @blueprint.route('/')
 @blueprint.route('/index')
 @login_required
 def index():
  
-    return render_template('home/index.html')
+    return render_template('dashboard/dashboard.html')

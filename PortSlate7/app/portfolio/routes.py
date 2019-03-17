@@ -18,18 +18,13 @@ LoanAbstracts_scehma=LoanAbstractSchema(many=True)
 @blueprint.route('/assets', methods=['GET'])
 @login_required
 def portfolio_homepage():
-    """
-    Render the homepage template on the / route
-    """
-    # form=LoanAbstractForm()
+
     return render_template('portfolio/assets.html')
 
 @blueprint.route('/asset', methods=['GET'])
 @login_required
 def portfolio_assetdetail():
-    """
-    Render the homepage template on the / route
-    """
+
     return render_template('portfolio/asset.html')
 
 

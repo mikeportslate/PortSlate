@@ -1,8 +1,8 @@
 from flask import Blueprint
 
 blueprint = Blueprint(
-    'home_blueprint',
+    'dashboard_blueprint',
     __name__,
-    url_prefix='/home',
+    url_prefix='/dashboard',
     static_folder='static'
 )

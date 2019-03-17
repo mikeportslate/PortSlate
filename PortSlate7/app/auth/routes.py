@@ -36,12 +36,12 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and checkpw(password.encode('utf8'), user.password):
             login_user(user)
-            return redirect(url_for('home_blueprint.index'))
+            return redirect(url_for('dashboard_blueprint.index'))
         return render_template('errors/page_403.html')
     if not current_user.is_authenticated:
         return render_template('login/login.html', login_form=login_form, create_account_form=create_account_form)
 
-    return redirect(url_for('home_blueprint.index'))
+    return redirect(url_for('dashboard_blueprint.index'))
 
 @blueprint.route('/create_user', methods=['POST'])
 def create_user():

@@ -2,10 +2,9 @@ from os import environ
 
 
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_RECYCLE = 3600
-    SQLALCHEMY_ECHO=True
+    SQLALCHEMY_ECHO=False
 
     WTF_CSRF_ENABLED = True
     SECRET_KEY = 'CTaUlI2kbIe9GFA9jI2Hz9krZRZzF0wEW0Tw7kqf'
@@ -25,6 +24,7 @@ class ProductionConfig(Config):
 
 
 class DebugConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
     DEBUG = True
 
 
