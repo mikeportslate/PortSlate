@@ -49,7 +49,8 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td colspan="2"><img class="img-responsive avatar-view" src="../static/images/mf1.jpg" alt="Avatar">
+                              
+                              <td colspan="2"><img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/mf1.jpg') }}" alt="Avatar">
                               </td>
                             </tr>
 
@@ -244,16 +245,16 @@
                       </ul>
                       <div id="finTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in" id="fin_annual">
-                          <img class="img-responsive avatar-view" src="../static/images/fin_annual.png" >
+                          <img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/fin_annual.png') }}" >
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="fin_month">
-                          <img class="img-responsive avatar-view" src="../static/images/fin_annual.png" >
+                          <img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/fin_annual.png') }}" >
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="rent">
-                      <img class="img-responsive avatar-view" src="../static/images/rentroll.png" >
+                      <img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/rentroll.png') }}" >
                   </div>
                   <div class="tab-pane" id="loan">
                     <div class="" role="tabpanel">

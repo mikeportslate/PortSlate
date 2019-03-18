@@ -10,20 +10,15 @@ from app.portfolio import blueprint
 from app.api.forms import LoanAbstractForm
 
 
-
-LoanAbstract_schema=LoanAbstractSchema()
-LoanAbstracts_scehma=LoanAbstractSchema(many=True)
-
-
 @blueprint.route('/assets', methods=['GET'])
 @login_required
 def portfolio_homepage():
 
     return render_template('portfolio/assets.html')
 
-@blueprint.route('/asset', methods=['GET'])
+@blueprint.route('/asset/<int:asset_id>', methods=['GET'])
 @login_required
-def portfolio_assetdetail():
+def portfolio_assetdetail(asset_id):
 
     return render_template('portfolio/asset.html')
 

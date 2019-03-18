@@ -1,15 +1,27 @@
 $(document).ready(function() {
 
-    $('#datatable-buttons').DataTable({
+    $('#datatable').DataTable({
         "processing": true,
-        "serverSide": true,
+        "serverSide": false,
+        "info": true,
+        // "responsive": true,
+        "bPaginate": false,
+        "bFilter": false,
+        "bAutoWidth": true,
         "ajax": {
             "url": "/api/portfolio/assets",
             "type": "GET"
         },
         "columns": [
-            { "data": null, defaultContent: "" },
-            {"data": "AssetName"},
+            { "render": function(data, type, JsonResultRow, meta){
+                return '<img src="../static/images/'+JsonResultRow.Img+'" width=100%>';
+            }},
+            {
+                "data": "AssetName",
+                "render": function(data, type, JsonResultRow, meta){
+                    return '<a href="/portfolio/asset/' + JsonResultRow.AssetID + '">' + data + '</a>';
+                }
+            },
             {"data": "PropertyType"},
             {"data": "TransactionDate"},
             {"data": "Sqft_Unit"},
@@ -22,8 +34,8 @@ $(document).ready(function() {
             {"data": "InterestRate"},
             {"data": "RateType"},
             {"data": "Maturity"}
-        ]
-
+        ],
+        "order": [[0,"asc"]]
 
     });
 
