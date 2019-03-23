@@ -6,6 +6,7 @@
 import sqlalchemy
 import pandas as pd
 import datetime
+import json
 from sqlalchemy import create_engine
 
 engine = create_engine('mysql+pymysql://mikelam:12345678@awssample1.cji0zdy5khnh.us-west-2.rds.amazonaws.com:3306/PortSlate')
@@ -25,6 +26,8 @@ idx_Inception=(data['Period']<=period_now)
 data_aggM =data.groupby('Period').sum()
 data_aggM=data_aggM.reset_index()
 data_aggM['LTV'] = data_aggM['Balance_End'] / data_aggM['MarketValue']
+data_aggM['DSCR'] = data_aggM['NOI']/data_aggM['DebtService']
+data_aggM['DSCR_IO']=data_aggM['NOI']/data_aggM['InterestPmt']
 
 PortStat = { 
     "Period": period_now.strftime("%m/%d/%Y"),
@@ -49,17 +52,30 @@ PortStat = {
     "LoanSpread": (data['indexspread'][idx_LM & (data['ratetype']=='Floating')]*data['Balance_End'][idx_LM & (data['ratetype']=='Floating')]).sum()/data['Balance_End'][idx_LM & (data['ratetype']=='Floating')].sum()
 }
 
-LineChart_json=data_aggM.loc[data_aggM['Period']<=period_now, ['Period','MarketValue','NAV','LTV']]
-LineChart_json=LineChart_json.to_json(orient='records', date_format='iso')
+LineChart_json=data_aggM.loc[data_aggM['Period']<=period_now, ['Period','MarketValue','NAV','LTV', 'InterestPmt','PrincipalPmt','DebtService','DSCR','DSCR_IO']]
+LineChart_json=LineChart_json.to_json(orient='columns', date_format='iso')
+LineChart_json=json.loads(LineChart_json)
 
 BarChart=data.loc[data['Period']==data['date_maturityinitial']]
 BarChartInitial=BarChart.groupby(lambda x: BarChart['date_maturityinitial'][x].year).sum()
 BarChartInitial['Year']=BarChartInitial.index
 BarChartInitial_json=BarChartInitial[['Year','Balance_End']]
 BarChartInitial_json=BarChartInitial_json.to_json(orient='records', date_format='iso')
+BarChartInitial_json=json.loads(BarChartInitial_json)
 
 BarChart=data.loc[data['Period']==data['date_maturityext_1']]
 BarChartExt=BarChart.groupby(lambda x: BarChart['date_maturityext_1'][x].year).sum()
 BarChartExt['Year']=BarChartExt.index
 BarChartExt_json=BarChartExt[['Year','Balance_End']]
 BarChartExt_json=BarChartExt_json.to_json(orient='records', date_format='iso')
+BarChartExt_json=json.loads(BarChartExt_json)
+
+year = BarChartExt['Year'].max()
+years=list(range(year-3, year+2, 1))
+maturityInitial_json = {};
+maturityExt_json = {};
+for i in years:
+    row = {str(i): pd.to_numeric(BarChartInitial[BarChartInitial['Year']==i]['Balance_End'].sum())}
+    maturityInitial_json.update(row)
+    row = {str(i): pd.to_numeric(BarChartExt[BarChartExt['Year']==i]['Balance_End'].sum())}
+    maturityExt_json.update(row)

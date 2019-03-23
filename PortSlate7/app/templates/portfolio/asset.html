@@ -17,7 +17,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h3>Lakeshore Pearl</h3>
+              <h3>Asset 1</h3>
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -32,6 +32,8 @@
                   <li><a href="#rent" data-toggle="tab">Rent Roll</a>
                   </li>                  
                   <li><a href="#loan" data-toggle="tab">Loan Abstract</a>
+                  </li>
+                  <li><a href="#return" data-toggle="tab">Return Analysis</a>
                   </li>
                   <li><a href="#file" data-toggle="tab">Files</a>
                   </li>
@@ -541,13 +543,210 @@
                     </div>
                   </div>
                   <div class="tab-pane" id="file">
+                  </div>
+                  <div class="tab-pane" id="return">
+                    <div class ="row">
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                          <div class="x_panel">
+                              <div class="x_title">
+                                  <h3>Return Assumptions</h3>
+                                  <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+                                <form id="return_form">
+                                <div class="row form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-4">Exit Cost (% of Sale Price) </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <input type="text" class="form-control" value="1.5%">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-4">Exit Year</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <input type="number" class="form-control" value=2023>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-4">Exit Cap Rate</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <input type="text" class="form-control" value="4.3%">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-4">Terminal NOI Adjustment</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <input type="number" class="form-control" value =0>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-4">JV Split (%)</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <input type="text" class="form-control" value = "0.0%">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                                </form>
+                              </div>
+                          </div>                         
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                          <div class="x_panel">
+                              <div class="x_title">
+                                  <h3>Return Attributions</h3>
+                                  <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+                                  <img src="..\..\static\images\return.png" width=100%></img>
+                              </div>
+                          </div>                             
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                          <div class="x_panel">
+                              <div class="x_title">
+                                  <h3>Cash Flow</h3>
+                                  <div class="clearfix"></div>
+                              </div>                          
+                              <div class="x_content">
+                                <table class = "table">
+                                  <thead>
+                                  </thead>
+                                  <tbody>
+                                      <table class="table  table-bordered">
+                                        <tr>
+                                          <td></td>
+                                          <td style="text-align:right;"><b>Y0</b></td>
+                                          <td style="text-align:right;"><b>Y1</b></td>
+                                          <td style="text-align:right;"><b>Y2</b></td>
+                                          <td style="text-align:right;"><b>Y3</b></td>
+                                          <td style="text-align:right;"><b>Y4</b></td>
+                                          <td style="text-align:right;"><b>Y5</b></td>
+                                          <td style="text-align:right;"><b>Y6</b></td>
+                                        </tr>
+                                        <tr>
+                                          <td >Property Acquisition</td>
+                                          <td style="text-align:right;">$(300,000,000)</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                        </tr>
+                                        <tr>
+                                          <td >Equity Contribution</td>
+                                          <td style="text-align:right;">$(100,000,000)</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                        </tr>
+                                        <tr>
+                                          <td >Debt Financing</td>
+                                          <td style="text-align:right;">$(200,000,000)</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                        </tr>
+                                        <tr>
+                                        </tr>
+                                        <tr>
+                                          <td >Unlevered NOI</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Debt Service</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"> $(8,000,000)</td>
+                                          <td style="text-align:right;"> $(8,000,000)</td>
+                                          <td style="text-align:right;"> $(8,000,000)</td>
+                                          <td style="text-align:right;"> $(8,000,000)</td>
+                                          <td style="text-align:right;"> $(8,000,000)</td>
+                                          <td style="text-align:right;"> $(8,000,000)</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Gross Proceed</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;">$425,555,734</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Debt Payoff</td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;"></td>
+                                          <td style="text-align:right;">$(200,000,000)</td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=7>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Unlevered Net Cashflow</td>
+                                          <td style="text-align:right;">$(300,000,000)</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$15,000,000</td>
+                                          <td style="text-align:right;">$440,555,734</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Levered Net Cashflow</td>
+                                          <td style="text-align:right;">$(100,000,000)</td>
+                                          <td style="text-align:right;">$7,000,000</td>
+                                          <td style="text-align:right;">$7,000,000</td>
+                                          <td style="text-align:right;">$7,000,000</td>
+                                          <td style="text-align:right;">$7,000,000</td>
+                                          <td style="text-align:right;">$7,000,000</td>
+                                          <td style="text-align:right;">$232,555,734</td>
+                                        </tr>
+                                        <tr>
+                                            <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=7>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Unlevered Returns</td>
+                                          <td style="text-align:right;">10%</td>
+                                          <td style="text-align:right;">1.7x</td>
+                                        </tr>
+                                        <tr>
+                                          <td >Levered Returns</td>
+                                          <td style="text-align:right;">20%</td>
+                                          <td style="text-align:right;">2.7x</td>
+                                        </tr>
+                                      </table>
+                                  </tbody>
+                                </table>                                
+                              </div>
+                          </div>                             
+                      </div>
+                    </div>
 
+                    </div>
                   </div>
                 </div>
-              </div>
-                  
-
             </div>
+          </div>
           </div>
         </div>
       </div>

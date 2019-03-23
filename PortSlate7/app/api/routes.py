@@ -216,7 +216,7 @@ def api_dashtimeseries():
 def api_portfolioassets():
 
     conn = db.engine.connect()
-    data = pd.read_sql_query('select * from v_GetPortfolioAssets', conn)
+    data = pd.read_sql_query('select * from v_PortfolioAssetList', conn)
     data['ImgSrc']='<img src=\'..\static\images\\'''   + data['Img'] +'.png\'' + ' width=100%></img>'
     data_json = data.to_json(orient='records',date_format='iso')
     data_json=json.loads(data_json)
