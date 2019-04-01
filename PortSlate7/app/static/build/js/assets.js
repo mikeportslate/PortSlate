@@ -10,7 +10,8 @@ $(document).ready(function() {
         "bAutoWidth": true,
         "ajax": {
             "url": "/api/portfolio/assets",
-            "type": "GET"
+            "type": "POST",
+            "data": {vehicle:localStorage.getItem('fund'), assetid:localStorage.getItem('asset'),asofdate:localStorage.getItem('asofdate')}
         },
         "columns": [
             { "render": function(data, type, JsonResultRow, meta){
@@ -19,24 +20,45 @@ $(document).ready(function() {
             {
                 "data": "AssetName",
                 "render": function(data, type, JsonResultRow, meta){
-                    return '<a href="/portfolio/asset/' + JsonResultRow.AssetID + '">' + data + '</a>';
+                    return '<a href="/portfolio/asset/' + JsonResultRow.AssetID + '/'+ localStorage.getItem('asofdate') +'">' + data + '</a>';
+                    //return '<a href="#">' + data + '</a>';
                 }
             },
             {"data": "PropertyType"},
-            {"data": "TransactionDate"},
-            {"data": "Sqft_Unit"},
-            {"data": "Occupancy"},
-            {"data": "Cost"},
-            {"data": "GAV"},
-            {"data": "NAV"},
-            {"data": "LoanBalance"},
-            {"data": "LTV"},
-            {"data": "InterestRate"},
+            {
+                "data": "PurchaseDate", 
+                "render": function(data, type, JsonResultRow, meta){
+                    return moment(data).format('YYYY-MM-DD');
+                }
+            },
+            {"data": "Sqft_Unit", render: $.fn.dataTable.render.number(',', '.', 0, '') },
+            {
+                "data": "Occupancy", 
+                "render": function(data, type, JsonResultRow, meta){
+                    return parseFloat(data*100).toFixed(0)+"%";
+                }
+            },
+            {"data": "Cost", render: $.fn.dataTable.render.number(',', '.', 0, '$') },
+            {"data": "GAV", render: $.fn.dataTable.render.number(',', '.', 0, '$') },
+            {"data": "NAV", render: $.fn.dataTable.render.number(',', '.', 0, '$') },
+            {"data": "LoanBalance", render: $.fn.dataTable.render.number(',', '.', 0, '$') },
+            {
+                "data": "LTV", 
+                "render": function(data, type, JsonResultRow, meta){
+                    return parseFloat(data*100).toFixed(0)+"%";
+                }
+            },
+            {"data": "InterestRate" },
             {"data": "RateType"},
-            {"data": "Maturity"}
+            {
+                "data": "Maturity",
+                "render": function(data, type, JsonResultRow, meta){
+                    return moment(data).format('YYYY-MM-DD');
+                }
+            }
         ],
         "order": [[0,"asc"]]
-
+    
     });
 
 });

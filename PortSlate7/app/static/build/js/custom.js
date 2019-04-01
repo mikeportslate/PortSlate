@@ -153,12 +153,33 @@ $MENU_TOGGLE.on('click', function() {
 $(document).ready(function() {
   if (localStorage.getItem('fund')) {
     $('#menufund').val(localStorage.getItem('fund'));
-  }
+  } else {
+		localStorage.setItem('fund', $('#menufund').val());	
+	}
 });
 
 $('#menufund').on('change', function() {
   var currentVal=$(this).val();
-  localStorage.setItem('fund', currentVal)
+  localStorage.setItem('fund', currentVal);
+});
+
+
+// Date Selection at Top Nav Bar
+
+$(document).ready(function() {
+  if (localStorage.getItem('asofdate')) {
+    $('#AsOfDate').val(localStorage.getItem('asofdate'));
+  } else {
+		var today = new Date()
+		document.getElementById("AsOfDate").valueAsDate = new Date(today.getFullYear(), today.getMonth()+1,0);
+		localStorage.setItem('asofdate', $('#AsOfDate').val())	
+	}
+});
+
+$('#AsOfDate').on('change', function() {
+	var currentVal=$(this).context.valueAsDate;
+	$(this).context.valueAsDate = new Date(currentVal.getFullYear(), currentVal.getMonth()+1,0)
+  localStorage.setItem('asofdate', $('#AsOfDate').val())
 
 });
 

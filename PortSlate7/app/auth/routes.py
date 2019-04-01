@@ -13,11 +13,11 @@ from app.auth import blueprint
 from app.auth.forms import LoginForm, CreateAccountForm, SubmitMessage
 
 
-# @blueprint.route('/')
-# def route_default():
+@blueprint.route('/landing')
+def route_default():
     
-#     usermessage = SubmitMessage(request.form)
-#     return render_template('landing.html', usermessage=usermessage)
+    usermessage = SubmitMessage(request.form)
+    return render_template('landing.html', usermessage=usermessage)
 
 @blueprint.route('/page_<error>')
 def route_errors(error):

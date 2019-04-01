@@ -1,7 +1,7 @@
 
 import pandas as pd
 import datetime
-from flask import flash, render_template, json, jsonify
+from flask import flash, render_template, json, jsonify, request
 from flask_login import login_required, current_user
 # from datetime import datetime
 from sqlalchemy.sql import text
@@ -211,14 +211,59 @@ def api_dashtimeseries():
     
     return jsonify(Output_json)
 
+
+@blueprint.route('/dashboard/assets', methods=['GET', 'POST'])
+@login_required
+def api_dashAssets():
+
+    conn = db.engine.connect()
+
+    vehicle = request.form['vehicle']
+    asofdate = request.form['asofdate']
+
+    sql = f"select * from v_VehicleAssetList where VehicleName='{vehicle}' and Period<='{asofdate}'"
+    data = pd.read_sql_query(sql, conn)
+
+    data_AssetGeo=data[{'VehicleName','PropertyName','lat','long','GAV_P'}]
+    data_AssetGeo=data_AssetGeo.rename(columns={'PropertyName':'name'})
+    data_AssetGeo_json=data_AssetGeo.to_json(orient='records')
+    data_AssetGeo_json = json.loads(data_AssetGeo_json)
+
+    data_AssetType = data[{'VehicleName','PropertyType','GAV_P'}].groupby(['VehicleName','PropertyType'])
+    data_AssetRegion = data[{'VehicleName','NCREIF_Region','GAV_P'}].groupby(['VehicleName','NCREIF_Region'])
+    data_AssetType=data_AssetType.sum().reset_index()
+    data_AssetRegion=data_AssetRegion.sum().reset_index()
+    data_AssetType_json=data_AssetType.to_json(orient='records')
+    data_AssetRegion_json=data_AssetRegion.to_json(orient='records')
+    data_AssetType_json = json.loads(data_AssetType_json)
+    data_AssetRegion_json = json.loads(data_AssetRegion_json)
+
+    output_json = {'geo': data_AssetGeo_json, 'assettype': data_AssetType_json, 'assetregion': data_AssetRegion_json}
+
+
+    return jsonify(output_json)
+
 @blueprint.route('/portfolio/assets', methods=['GET', 'POST'])
 @login_required
 def api_portfolioassets():
 
     conn = db.engine.connect()
-    data = pd.read_sql_query('select * from v_PortfolioAssetList', conn)
-    data['ImgSrc']='<img src=\'..\static\images\\'''   + data['Img'] +'.png\'' + ' width=100%></img>'
-    data_json = data.to_json(orient='records',date_format='iso')
+    vehicle = request.form['vehicle']
+    asofdate = request.form['asofdate']
+
+    # data = pd.read_sql_query('select * from v_PortfolioAssetList', conn)
+    sql = f"select * from v_VehicleAssetList where VehicleName='{vehicle}' and Period='{asofdate}'"
+    data = pd.read_sql_query(sql, conn)
+    data = data[{'AssetID','PropertyName','City','State','Country','PropertyType','PurchaseDate','SquareFeet','UnitNumber','Occupancy_P','P_USD_TotalCostUnlevered','GAV_P','DebtBalanceEnd','RateType','MaturityInitial','Index','IndexSpread','Img'}]
+    data['NAV'] = data['GAV_P']-data['DebtBalanceEnd']
+    data['LTV'] = data['DebtBalanceEnd']/data['GAV_P']
+    data['AssetName'] = data['PropertyName'] + '<br>' + data['City'] + ' ' + data['State'] + ' ' + data['Country']
+    data['Sqft_Unit'] = data['UnitNumber']
+    data.loc[data['Sqft_Unit'].isnull(),'Sqft_Unit'] = data['SquareFeet']
+    data.rename(columns={'P_USD_TotalCostUnlevered':'Cost','GAV_P':'GAV','DebtBalanceEnd':'LoanBalance','MaturityInitial':'Maturity','Occupancy_P':'Occupancy'}, inplace=True)
+    data['InterestRate']= data['Index'] + ' + ' +  data['IndexSpread'].astype(str) + 'bps'
+
+    data_json = data.to_json(orient='records')
     data_json=json.loads(data_json)
 
     return jsonify({'data': data_json})

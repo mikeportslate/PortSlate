@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     plotBarChart();
     plotPieChart();
+    plotEasyPieChart();
 
 });	
 
@@ -133,3 +134,23 @@ function plotStackBarChart2(labels, data1, data2) {
     var mylineChart4 = new Chart(ctx, config);	
 
 };
+
+function plotEasyPieChart(){
+
+    $('.chart').easyPieChart({
+        easing: 'easeOutElastic',
+        delay: 3000,
+        barColor: '#26B99A',
+        trackColor: '#fff',
+        scaleColor: false,
+        lineWidth: 20,
+        trackWidth: 16,
+        lineCap: 'butt',
+        onStep: function(from, to, percent) {
+          $(this.el).find('.percent').text(Math.round(percent));
+        }
+      });
+      var chart = window.chart = $('.chart').data('easyPieChart');
+
+}
+

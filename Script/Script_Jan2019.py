@@ -1,7 +1,7 @@
 !pip install pandas
 !pip install sqlalchemy
 !pip install pymysql
-
+!pip install geopy
 
 import sqlalchemy
 import pandas as pd

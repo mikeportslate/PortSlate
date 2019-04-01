@@ -38,21 +38,262 @@
         <div class="count" id="TopMaturity"></div>        
       </div>
     </div>
-    <!-- Top Row: NAV, LTV and DSCR -->
-    <div class="row">
+    <!-- Row: Asset Summary -->    
+    <div class ="row">
+      <div class="col-md-3 col-sm-3 col-xs-3">
+          <div class="x_panel">
+            <div class ="x_title" id="FundName"></div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                      <tr style="height:30px">
+                        <th width="50%" style="padding-top: 20px"><b>FUND SUMMARY</b></th>
+                      </tr>                           
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><b>Fund Inception Date</b></td>
+                        <td align="right"></td>
+                      </tr>
+                      <tr>
+                        <td><b>Gross Asset Value</b></td>
+                        <td align="right">$600,000,000</td>
+                      </tr>
+                      <tr>
+                        <td><b>Net Asset Value</b></td>
+                        <td align="right">$350,000,000</td>
+                      </tr>
+                      <tr>
+                        <td><b># of Assets</b></td>
+                        <td align="right">6</td>
+                      </tr>
+                      <tr>
+                        <td><b>Acquisitions Closed</b></td>
+                        <td align="right">9</td>
+                      </tr>
+                      <tr>
+                        <td><b>Dispositions Closed</b></td>
+                        <td align="right">3</td>
+                      </tr>
+                      <tr>
+                        <td><b>Total Capital Called</b></td>
+                        <td align="right">$450,000,000</td>
+                      </tr>
+                      <tr>
+                        <td><b>Total Capital Distributed</b></td>
+                        <td align="right">$200,000,000</td>
+                      </tr>
+                      <tr style="height:30px">
+                        <td style="padding-top: 20px"><b>PERFORMANCE</b></td>
+                      </tr>
+                      <tr><td colspan="2" style="padding:0px">
+                        <table class="table">
+                          <tr>
+                            <td></td>
+                            <td align="right"><b>IRR</b></td>
+                            <td align="right"><b>Equity Multiple</b></td>
+                          </tr>
+                          <tr>
+                            <td><b>Returns (Gross of fees)</b></td>
+                            <td align="right">14.8%</td>
+                            <td align="right">2.1x</td>
+                          </tr>
+                          <tr>
+                            <td><b>Returns (Net of fees)</b></td>
+                            <td align="right">13.4%</td>
+                            <td align="right">2.2x</td>
+                          </tr>
 
-      <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="x_panel">
-          <div class="x_title">
-            <h3>Asset Value (Gross & Net) $mm <small></small></h3>
-            <div class="clearfix"></div>
+                        </table>
+                      </td></tr>
+                    </tbody>
+                </table>        
+            </div>
           </div>
-          <div class="x_content">
-            <canvas id="mylineChart2"></canvas>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+          <div class="x_panel">
+            <div class ="x_title"><h3>Asset Map</h3></div>
+            <div class="x_content">
+                <div id="AssetMap" style="height: 555px; width:900px">
+                </div>
+            </div>          
           </div>
         </div>
-      </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                  <h3>Property Diversification (%)</h3>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table class="">
+                    <tr>
+                      <th style="width:30%;">
+                        <p></p>
+                      </th>
+                      <th>
+                        <div class="col-lg- col-md-7 col-sm-7 col-xs-7">
+                          <p class="">Sector</p>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">%</p>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <canvas id="mydonutChart1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      </td>
+                      <td>
+                        <table class="tile_info" id="PropertyType">
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square aero"></i>Industrial</p>
+                            </td>
+                            <td>10%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square purple"></i>Multifamily</p>
+                            </td>
+                            <td>60%</td>
+                          </tr>
+                          <tr>
+                            <td><p><i class="fa fa-square red"></i>Office</p>
+                            </td>
+                            <td>15%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square green"></i>Retail</p>
+                            </td>
+                            <td>15%</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+            </div>
+            <div class="x_panel tile fixed_height_320 overflow_hidden">
+              <div class="x_title">
+                <h3>Region Diversification (%)</h3>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                <table class="">
+                  <tr>
+                    <th style="width:30%;">
+                      <p></p>
+                    </th>
+                    <th>
+                      <div class="col-lg- col-md-7 col-sm-7 col-xs-7">
+                        <p class="">Sector</p>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                        <p class="">%</p>
+                      </div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <canvas id="mydonutChart2" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                    </td>
+                    <td>
+                      <table class="tile_info" id="PropertyType">
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square aero"></i>East</p>
+                          </td>
+                          <td>10%</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square purple"></i>Midwest</p>
+                          </td>
+                          <td>60%</td>
+                        </tr>
+                        <tr>
+                          <td><p><i class="fa fa-square red"></i>South</p>
+                          </td>
+                          <td>15%</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p><i class="fa fa-square green"></i>West</p>
+                          </td>
+                          <td>15%</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+          </div>
+          
+        </div>
+    </div>
 
+    <!-- Row: NAV, LTV and DSCR -->
+    <div class="row">
+
+
+
+      <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class = "x_panel">
+            <div class="x_title">
+              <h3>Interest Rate Summary</h3>
+            </div>  
+              <div class="clearfix"></div>
+              <div class="col-md-7 col-sm-7 col-xs-7">
+                <div class="x_content">
+                  <table class="table" id="RateSummaryTable">
+                      <thead>
+  
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><b>Effective Rate (%)</b></td>
+                          <td><b></b></td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;&nbsp;&nbsp;Effective Fixed Rate (%) </td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;&nbsp;&nbsp;Effective Floating Rate (%)</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><i>&nbsp;&nbsp;&nbsp;&nbsp;Average Floating Spread (bps)</i></td>
+                          <td><i></i></td>
+                        </tr>
+                        <tr>
+                          <td><b>Loan Type Allocation</b></td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;&nbsp;&nbsp;Loans with fixed rate</td>
+                          <td>50%</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;&nbsp;&nbsp;Loans with floating rate w/ cap</td>
+                          <td>10%</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;&nbsp;&nbsp;&nbsp;Loans with floating rate w/o cap</td>
+                          <td>40%</td>
+                        </tr>
+                      </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <canvas id=mypieChart></canvas>
+              </div>
+          </div>
+        </div>    
+  
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="x_panel">
           <div class="x_title">
@@ -79,102 +320,64 @@
 
     </div>
 
-    <!-- Row#2: Interest Rate Summary -->    
+
+    <!-- Row#3: Interest Rate Summary -->    
     <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-4">
-        <div class="x_panel">
-            <div class="x_title"><h3>Upcoming Action Required</h3></div>  
-            <div class="x_content">
-            <table class="table" id="EventTable">
-              <thead>
-                <tr>
-                  <th>Asset</th>
-                  <th>Due Date</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><b>Asset 1</b></td>
-                  <td>3/31/2019</td>
-                  <td>Quarterly Borrower Compliance</td>
-                </tr>
-                <tr>
-                  <td><b>Asset 3</b></td>
-                  <td>3/31/2019</td>
-                  <td>Quarterly Borrower Compliance</td>
-                </tr>
-                <tr>
-                  <td><b>Asset 5</b></td>
-                  <td>5/30/2019</td>
-                  <td>Notice for Loan Extension</td>
-                </tr>
-                <tr>
-                  <td><b>Asset 1</b></td>
-                  <td>6/30/2019</td>
-                  <td>Notice for Loan Extension</td>
-                </tr>
-                <tr>
-                  <td><b>Asset 3</b></td>
-                  <td>6/30/2019</td>
-                  <td>Notice for Loan Extension</td>
-                </tr>
-
-              </tbody>
-            </table>
+          <div class="x_panel">
+              <div class="x_title"><h3>Upcoming Action Required</h3></div>  
+              <div class="x_content">
+              <table class="table" id="EventTable">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>Asset 1</b></td>
+                    <td>3/31/2019</td>
+                    <td>Quarterly Borrower Compliance</td>
+                  </tr>
+                  <tr>
+                    <td><b>Asset 3</b></td>
+                    <td>3/31/2019</td>
+                    <td>Quarterly Borrower Compliance</td>
+                  </tr>
+                  <tr>
+                    <td><b>Asset 5</b></td>
+                    <td>5/30/2019</td>
+                    <td>Notice for Loan Extension</td>
+                  </tr>
+                  <tr>
+                    <td><b>Asset 1</b></td>
+                    <td>6/30/2019</td>
+                    <td>Notice for Loan Extension</td>
+                  </tr>
+                  <tr>
+                    <td><b>Asset 3</b></td>
+                    <td>6/30/2019</td>
+                    <td>Notice for Loan Extension</td>
+                  </tr>
+                  <tr>
+                    <td><b>Asset 10</b></td>
+                    <td>8/31/2019</td>
+                    <td>Quarterly Borrower Compliance</td>
+                  </tr>
+                  <tr>
+                    <td><b>Asset 12</b></td>
+                    <td>9/30/2019</td>
+                    <td>Quarterly Borrower Compliance</td>
+                  </tr>
+  
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      </div>       
-      <div class="col-md-8 col-sm-8 col-xs-8">
-        <div class = "x_panel">
-          <div class="x_title">
-            <h3>Interest Rate Summary</h3>
-          </div>  
-            <div class="col-md-6 col-sm-6 col-xs-6">
-              <div class="clearfix"></div>
-              
-              <div class="x_content">
-                <table class="table" id="RateSummaryTable">
-                    <thead>
-
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><b>Effective Rate (%)</b></td>
-                        <td><b></b></td>
-                      </tr>
-                      <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;Effective Fixed Rate (%) </td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;Effective Floating Rate (%)</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td><i>&nbsp;&nbsp;&nbsp;&nbsp;Average Floating Spread (bps)</i></td>
-                        <td><i></i></td>
-                      </tr>
-                    </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
-              <div class="x_content">
-                  <div style="height: 225px">
-                      <canvas id="mypieChart"></canvas>
-                  </div>
-              </div>
-            </div>
-        </div>
-      </div>      
-           
-    </div>
-
-    <!-- Row#3: Maturity -->
-    <div class="row">
-
-      <div class="col-md-6 col-sm-6 col-xs-12">
+      </div>          
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
             <h3>Loans By Maturity - Initial Terms <small>$mm</small></h3>
@@ -187,8 +390,7 @@
           </div>
         </div>
       </div>
-
-      <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
             <h3>Loans By Maturity - Extended Terms <small>$mm</small></h3>
@@ -201,10 +403,7 @@
           </div>
         </div>
       </div>
-
-
     </div>
-
 
   </div>
 {% endblock content %}
@@ -213,18 +412,25 @@
   {{ super()}}
   <script src="{{ url_for('static', filename='vendors/Chart.js/dist/Chart.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/gauge.js/dist/gauge.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendors/skycons/skycons.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.pie.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='vendors/skycons/skycons.js') }}"></script> -->
+  <!-- <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.js') }}"></script> -->
+  <!-- <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.pie.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.time.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.stack.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/Flot/jquery.flot.resize.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/flot.orderbars/js/jquery.flot.orderBars.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendors/flot.curvedlines/curvedLines.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/flot.curvedlines/curvedLines.js') }}"></script> -->
   <script src="{{ url_for('static', filename='vendors/DateJS/build/date.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendors/jqvmap/dist/jquery.vmap.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='vendors/jqvmap/dist/jquery.vmap.js') }}"></script>
   <script src="{{ url_for('static', filename='vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}"></script> -->
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-map.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/geodata/1.2.0/countries/united_states_of_america/united_states_of_america.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
   <script src="{{ url_for('static', filename='build/js/dashboard.js') }}"></script>
+
 {% endblock javascripts %}

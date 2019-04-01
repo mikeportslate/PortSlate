@@ -1,0 +1,251 @@
+{% extends "base_site.html" %}
+
+{% block title %} {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="right_col" role="main">
+
+  <div class="row">
+
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h3>Fund Model Assumptions</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <form id="fundIRRInput">
+              <div class=""><h4>Equity Contributions</h4></div>
+              <div class="row form-group">
+                  <label class="control-label col-md-7 col-sm-7 col-xs-7">Sponsor Equity </label>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <input type="text" class="form-control" value="2%">
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="text" class="form-control" value="$20,000,000">
+                  </div>
+
+              </div>
+              <div class="row form-group">
+                  <label class="control-label col-md-7 col-sm-7 col-xs-7">LP Equity </label>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <input type="text" class="form-control" value="98%">
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="text" class="form-control" value="$980,000,000">
+                  </div>
+              </div>
+
+              <div class=""><h4>Waterfall Structure (IRR Hurdles)</h4></div>
+                           
+              <div class="row form-group">
+                  <label class="control-label col-md-6 col-sm-6 col-xs-6">Hurdle 1 (Pref Return) </label>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <input type="text" class="form-control" value="0%">
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-2">
+                    <input type="text" class="form-control" value="8%">
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-2">
+                    <input type="text" class="form-control" value="20%">
+                  </div>
+
+              </div>
+              <div class="row form-group">
+                  <label class="control-label col-md-6 col-sm-6 col-xs-6">Hurdle 2 </label>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <input type="text" class="form-control" value="8%">
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-2">
+                    <input type="text" class="form-control" value="12%">
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-2">
+                    <input type="text" class="form-control" value="30%">
+                  </div>
+              </div>
+              <div class="row form-group">
+                  <label class="control-label col-md-6 col-sm-6 col-xs-6">Hurdle 3 </label>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <input type="text" class="form-control" value="12%">
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-2">
+                    <input type="text" class="form-control" value="15%">
+                  </div>
+                  <div class="col-md-2 col-sm-3 col-xs-2">
+                    <input type="text" class="form-control" value="40%">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <button class="btn btn-success">Submit</button>
+              </div>
+            </form>   
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h3>Fund Returns Summary</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h3>Cash Flow Summary</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class = "table">
+                <thead>
+                </thead>
+                <tbody>
+                    <table class="table  table-bordered">
+                      <tr>
+                        <td></td>
+                        <td style="text-align:right;"><b>Y0</b></td>
+                        <td style="text-align:right;"><b>Y1</b></td>
+                        <td style="text-align:right;"><b>Y2</b></td>
+                        <td style="text-align:right;"><b>Y3</b></td>
+                        <td style="text-align:right;"><b>Y4</b></td>
+                        <td style="text-align:right;"><b>Y5</b></td>
+                        <td style="text-align:right;"><b>Y6</b></td>
+                      </tr>
+                      <tr>
+                        <td >Property Acquisition</td>
+                        <td style="text-align:right;">$(300,000,000)</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                      </tr>
+                      <tr>
+                        <td >Equity Contribution</td>
+                        <td style="text-align:right;">$(100,000,000)</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                      </tr>
+                      <tr>
+                        <td >Debt Financing</td>
+                        <td style="text-align:right;">$(200,000,000)</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                      </tr>
+                      <tr>
+                      </tr>
+                      <tr>
+                        <td >Unlevered NOI</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                      </tr>
+                      <tr>
+                        <td >Debt Service</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"> $(8,000,000)</td>
+                        <td style="text-align:right;"> $(8,000,000)</td>
+                        <td style="text-align:right;"> $(8,000,000)</td>
+                        <td style="text-align:right;"> $(8,000,000)</td>
+                        <td style="text-align:right;"> $(8,000,000)</td>
+                        <td style="text-align:right;"> $(8,000,000)</td>
+                      </tr>
+                      <tr>
+                        <td >Gross Proceed</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;">$425,555,734</td>
+                      </tr>
+                      <tr>
+                        <td >Debt Payoff</td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;">$(200,000,000)</td>
+                      </tr>
+                      <tr>
+                          <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=7>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td >Unlevered Net Cashflow</td>
+                        <td style="text-align:right;">$(300,000,000)</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$15,000,000</td>
+                        <td style="text-align:right;">$440,555,734</td>
+                      </tr>
+                      <tr>
+                        <td >Levered Net Cashflow</td>
+                        <td style="text-align:right;">$(100,000,000)</td>
+                        <td style="text-align:right;">$7,000,000</td>
+                        <td style="text-align:right;">$7,000,000</td>
+                        <td style="text-align:right;">$7,000,000</td>
+                        <td style="text-align:right;">$7,000,000</td>
+                        <td style="text-align:right;">$7,000,000</td>
+                        <td style="text-align:right;">$232,555,734</td>
+                      </tr>
+                      <tr>
+                          <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=7>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td >Unlevered Returns</td>
+                        <td style="text-align:right;">10%</td>
+                        <td style="text-align:right;">1.7x</td>
+                      </tr>
+                      <tr>
+                        <td >Levered Returns</td>
+                        <td style="text-align:right;">20%</td>
+                        <td style="text-align:right;">2.7x</td>
+                      </tr>
+                    </table>
+                </tbody>
+              </table>                   
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+
+{% endblock javascripts %}

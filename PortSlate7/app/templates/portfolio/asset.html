@@ -17,7 +17,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h3>Asset 1</h3>
+              <h3>{{ AssetSummary[0]['PropertyName'] }}</h3>
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -52,33 +52,34 @@
                           <tbody>
                             <tr>
                               
-                              <td colspan="2"><img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/mf1.jpg') }}" alt="Avatar">
+                              <!-- <td colspan="2"><img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/mf2.jpg') }}" alt="Avatar"> -->
+                              <td colspan="2"><img class="img-responsive avatar-view" src="/static/images/{{ AssetSummary[0]['Img'] }}" alt="Avatar">
                               </td>
                             </tr>
 
                             <tr>
                               <td><b>Location</b></td>
-                              <td align="right">Chicago, IL, USA</td>
+                              <td align="right">{{ AssetSummary[0]['City'] }}</td>
                             </tr>
                             <tr>
                               <td><b>Sector</b></td>
-                              <td align="right">Office</td>
+                              <td align="right">{{ AssetSummary[0]['PropertyType']}}</td>
                             </tr>
                             <tr>
                               <td><b>Year Built</b></td>
-                              <td align="right">1996</td>
+                              <td align="right">{{ AssetSummary[0]['YearBuilt']}}</td>
                             </tr>
                             <tr>
                               <td><b>Size (Sqft or # of Units)</b></td>
-                              <td align="right">460,000</td>
+                              <td align="right">{{ "{:,.0f}".format(AssetSummary[0]['SquareFeet']) or AssetSummary[0]['UnitNumber'] }}</td>
                             </tr>
                             <tr>
                               <td><b>Leased</b></td>
-                              <td align="right">46%</td>
+                              <td align="right">{{ "{:,.2f}%".format(AssetSummary[0]['Occupancy_P']) }}</td>
                             </tr>
                             <tr>
                               <td><b>Acquisition Date</b></td>
-                              <td align="right">January 20, 2017</td>
+                              <td align="right">{{ AssetSummary[0]['TransactionDate']}}</td>
                             </tr>
                             <tr>
                               <td><b>Investment Structure</b></td>
@@ -86,19 +87,19 @@
                             </tr>
                             <tr>
                               <td><b>Purchase Price</b></td>
-                              <td align="right">$100,000,000</td>
+                              <td align="right">{{ "${:,.0f}".format(AssetSummary[0]['P_USD_TotalCostLevered']) }}</td>
                             </tr>
                             <tr>
                               <td><b>Current Value</b></td>
-                              <td align="right">$130,000,000</td>
+                              <td align="right">{{ "${:,.0f}".format(AssetSummary[0]['GAV_P']) }}</td>
                             </tr>
                             <tr>
                               <td><b>Debt</b></td>
-                              <td align="right">$110,000,000</td>
+                              <td align="right">{{ "${:,.0f}".format(AssetSummary[0]['DebtBalanceEnd']) }}</td>
                             </tr>
                             <tr>
                               <td><b>Lender</b></td>
-                              <td align="right">Bank of America</td>
+                              <td align="right">{{ AssetSummary[0]['Lender'] }}</td>
                             </tr>
     
                           </tbody>
@@ -112,14 +113,7 @@
                           </thead>
                           <tbody>
                             <td>
-                                Tower is a 449,000 sf office building located in downtown San Diego, CA. San Diego CBD office rents remain below long-term trend
-                                levels, signifying potential upside. The building has an excellent location at the connection of the
-                                traditional financial district and the Gaslamp residential and entertainment corridor. It is also on light rail
-                                that connects to nearby developing downtown neighborhoods. At acquisition, the property was 91%
-                                leased to twenty-seven tenants at approximately 14% below market rates, offering stable long term
-                                cash flow from an institutional quality tenant roster. With a purchase price at $273/sf and replacement
-                                cost estimate of $500/sf, this opportunity provides highly attractive relative value for Class A office
-                                product in a coastal CBD market at a significant discount to replacement cost. 
+                                {{ AssetSummary[0]['TransactionRationale']}} 
                             </td>
                           </tbody>
                         </table>
@@ -131,12 +125,7 @@
                           </thead>
                           <tbody>
                             <td>
-                                As of quarter-end, occupancy was 95%. During the quarter, we signed a 5-year 2,354 sf expansion
-                                with Parsons Environmental & Infrastructure Group.
-                                We have white-boxed and are actively marketing our one full floor vacancy and a 1,700 sf new prebuilt
-                                spec suite. We are planning to reorient the lobby and retail space, including the space to be
-                                vacated by Grab N' Go and Harold Stevens Jewelers, further activating the building lobby with a
-                                quality retail operator.
+                              {{ AssetSummary[0]['InvestmentOperations']}} 
                             </td>
                           </tbody>
                         </table>
@@ -598,7 +587,7 @@
                                   <div class="clearfix"></div>
                               </div>
                               <div class="x_content">
-                                  <img src="..\..\static\images\return.png" width=100%></img>
+                                  <img src="\static\images\return.png" width=100%></img>
                               </div>
                           </div>                             
                       </div>
@@ -744,7 +733,7 @@
 
                     </div>
                   </div>
-                </div>
+              </div>
             </div>
           </div>
           </div>

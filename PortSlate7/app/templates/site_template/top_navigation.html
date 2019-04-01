@@ -5,12 +5,21 @@
     </div>
 
     <ul class="nav toggle">
-        <li class="">
-            <select id="menufund">
-                  <option>PortSlate Core Fund XI</option>
-                  <option>PortSlate Opportunity Fund VII</option>
+        <li>
+          <a>
+            <select id="menufund" onchange="location.reload()">
+                  <option>PortSlate Property Fund</option>
+                  <option>PortSlate Opportunistic Fund VII</option>
+                  <option>PortSlate Core Fund X</option>
             </select>
+          </a>
+        </li>
     </ul>
+    <ul class="nav toggle">
+      <!-- <li class="">
+        <input type="date" id="AsOfDate">
+      </li> -->
+   </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <li class="">
@@ -31,13 +40,15 @@
         </ul>
       </li>
 
-      <li role="presentation" class="dropdown">
-        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+      <li class="">
+        <!-- <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-envelope-o"></i>
           <span class="badge bg-green">1</span>
-        </a>
-        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-          <li>
+        </a> -->
+          <a>
+          <input type="date" id="AsOfDate">
+          </a>
+          <!-- <li>
             <a>
               <span class="image"><img src="/static/images/img.jpg" alt="Profile Image" /></span>
               <span>
@@ -48,8 +59,8 @@
                 Film festivals used to be do-or-die moments for movie makers. They were where...
               </span>
             </a>
-          </li>
-        </ul>
+          </li> -->
+      
       </li>
     </ul>
   </nav>
