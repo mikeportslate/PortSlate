@@ -542,23 +542,30 @@
                                   <div class="clearfix"></div>
                               </div>
                               <div class="x_content">
-                                <form id="return_form">
+                                <form id="IRR_form">
+                                <div class="row form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-4">Asset </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                      <input type="text" class="form-control" id="asset" readonly value="{{ AssetSummary[0]['PropertyName'] }}">
+                                    </div>
+                                </div>
+
                                 <div class="row form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-4">Exit Cost (% of Sale Price) </label>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                      <input type="text" class="form-control" value="1.5%">
+                                      <input type="text" class="form-control" id="exitCost" value="1.5">
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-4">Exit Year</label>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                      <input type="number" class="form-control" value=2023>
+                                      <input type="number" class="form-control" id ="exitYear" value=2023>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-4">Exit Cap Rate</label>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                      <input type="text" class="form-control" value="4.3%">
+                                      <input type="text" class="form-control" id="exitCap" value="4.3">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -570,11 +577,11 @@
                                 <div class="row form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-4">JV Split (%)</label>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                      <input type="text" class="form-control" value = "0.0%">
+                                      <input type="text" class="form-control" id="exitJV" value ="0.0">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="button" class="btn btn-success" onclick="assetIRR()">Submit</button>
                                 </div>
                                 </form>
                               </div>
@@ -599,133 +606,7 @@
                                   <h3>Cash Flow</h3>
                                   <div class="clearfix"></div>
                               </div>                          
-                              <div class="x_content">
-                                <table class = "table">
-                                  <thead>
-                                  </thead>
-                                  <tbody>
-                                      <table class="table  table-bordered">
-                                        <tr>
-                                          <td></td>
-                                          <td style="text-align:right;"><b>Y0</b></td>
-                                          <td style="text-align:right;"><b>Y1</b></td>
-                                          <td style="text-align:right;"><b>Y2</b></td>
-                                          <td style="text-align:right;"><b>Y3</b></td>
-                                          <td style="text-align:right;"><b>Y4</b></td>
-                                          <td style="text-align:right;"><b>Y5</b></td>
-                                          <td style="text-align:right;"><b>Y6</b></td>
-                                        </tr>
-                                        <tr>
-                                          <td >Property Acquisition</td>
-                                          <td style="text-align:right;">$(300,000,000)</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                        </tr>
-                                        <tr>
-                                          <td >Equity Contribution</td>
-                                          <td style="text-align:right;">$(100,000,000)</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                        </tr>
-                                        <tr>
-                                          <td >Debt Financing</td>
-                                          <td style="text-align:right;">$(200,000,000)</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                        </tr>
-                                        <tr>
-                                        </tr>
-                                        <tr>
-                                          <td >Unlevered NOI</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Debt Service</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"> $(8,000,000)</td>
-                                          <td style="text-align:right;"> $(8,000,000)</td>
-                                          <td style="text-align:right;"> $(8,000,000)</td>
-                                          <td style="text-align:right;"> $(8,000,000)</td>
-                                          <td style="text-align:right;"> $(8,000,000)</td>
-                                          <td style="text-align:right;"> $(8,000,000)</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Gross Proceed</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;">$425,555,734</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Debt Payoff</td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;"></td>
-                                          <td style="text-align:right;">$(200,000,000)</td>
-                                        </tr>
-                                        <tr>
-                                            <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=7>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Unlevered Net Cashflow</td>
-                                          <td style="text-align:right;">$(300,000,000)</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$15,000,000</td>
-                                          <td style="text-align:right;">$440,555,734</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Levered Net Cashflow</td>
-                                          <td style="text-align:right;">$(100,000,000)</td>
-                                          <td style="text-align:right;">$7,000,000</td>
-                                          <td style="text-align:right;">$7,000,000</td>
-                                          <td style="text-align:right;">$7,000,000</td>
-                                          <td style="text-align:right;">$7,000,000</td>
-                                          <td style="text-align:right;">$7,000,000</td>
-                                          <td style="text-align:right;">$232,555,734</td>
-                                        </tr>
-                                        <tr>
-                                            <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=7>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Unlevered Returns</td>
-                                          <td style="text-align:right;">10%</td>
-                                          <td style="text-align:right;">1.7x</td>
-                                        </tr>
-                                        <tr>
-                                          <td >Levered Returns</td>
-                                          <td style="text-align:right;">20%</td>
-                                          <td style="text-align:right;">2.7x</td>
-                                        </tr>
-                                      </table>
-                                  </tbody>
-                                </table>                                
+                              <div class="x_content" id="AssetCashFlow">
                               </div>
                           </div>                             
                       </div>
@@ -774,5 +655,15 @@
       var mylineChart4 = new Chart(ctx, config);	
   </script>
 
+  <script type="text/javascript">
+    $(function() {
+        new AutoNumeric('#exitCost',  'percentageUS2dec');
+        new AutoNumeric('#exitCap',  'percentageUS2dec');
+        new AutoNumeric('#exitJV',  'percentageUS2dec');
+    });        
+
+  </script>
+
+  <script src="{{ url_for('static', filename='build/js/asset.js') }}"></script>
 {% endblock javascripts %}
 

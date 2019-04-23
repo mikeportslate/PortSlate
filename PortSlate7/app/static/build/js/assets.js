@@ -21,7 +21,6 @@ $(document).ready(function() {
                 "data": "AssetName",
                 "render": function(data, type, JsonResultRow, meta){
                     return '<a href="/portfolio/asset/' + JsonResultRow.AssetID + '/'+ localStorage.getItem('asofdate') +'">' + data + '</a>';
-                    //return '<a href="#">' + data + '</a>';
                 }
             },
             {"data": "PropertyType"},

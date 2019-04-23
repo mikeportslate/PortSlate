@@ -267,3 +267,150 @@ def api_portfolioassets():
     data_json=json.loads(data_json)
 
     return jsonify({'data': data_json})
+
+@blueprint.route('/asset/irr', methods=['GET', 'POST'])
+@login_required
+def api_assetIRR():
+    
+    conn=db.engine.connect()
+    exitCost = request.form['exitCost']
+    exitYear = request.form['exitYear']
+    exitCap = request.form['exitCap']
+    exitNOIAdj = request.form['exitNOIAdj']
+    exitJV = request.form['JV']
+    vehicle = request.form['vehicle']
+    assetID = request.form['assetID']
+
+    exitDate = exitYear + '-12-' + '31'
+    exitCost = float(exitCost.strip('%'))/100
+    exitCap = float(exitCap.strip('%'))/100
+    exitJV = float(exitJV.strip('%'))/100
+    
+    sql = f"call sp_IRRCF_Asset ('{assetID}','{vehicle}', '{exitDate}')"
+    data = pd.read_sql_query(sql, conn)
+    data['Year'] = data['Period'].dt.year
+    data['Month'] = data['Period'].dt.month.astype(str)
+    data['Month']=data['Month'].apply(lambda x: x.zfill(2))
+
+    data_yearmonth=pd.pivot_table(data, index={'Year', 'Month'}, columns='Field', values='Amount', aggfunc=np.sum)
+    data_yearmonth=data_yearmonth.reset_index()
+    data_yearmonth=data_yearmonth.fillna(0).copy()
+
+    data_yearmonth['GrossProceed']=0
+    data_yearmonth['NetProceed']=0
+
+    # data_yearmonth.to_csv('temp_yrmonth.csv')
+
+    DebtFunding= data_yearmonth.loc[0]['GrossPurchasePrice']-data_yearmonth.loc[0]['EquityContribution']
+    data_yearmonth.loc[0,'DebtFunding'] = DebtFunding
+    exitIdx=((data_yearmonth['Month']=='12') & (data_yearmonth['Year']==2023))
+    data_yearmonth.loc[exitIdx, 'GrossProceed']=data_yearmonth.loc[exitIdx, 'NTMNOI']/exitCap * (1-exitCost)
+    data_yearmonth.loc[exitIdx,'DebtPayoff']=data_yearmonth.loc[exitIdx,'DebtBalanceEnd']
+    data_yearmonth.loc[exitIdx, 'NetProceed']=data_yearmonth.loc[exitIdx, 'GrossProceed']-data_yearmonth.loc[exitIdx, 'DebtPayoff']
+    data_yearmonth['CashflowUnlever']=-data_yearmonth['GrossPurchasePrice']+data_yearmonth['NETOPERATINGINCOME']+data_yearmonth['GrossProceed']
+    data_yearmonth['CashflowLever']=-data_yearmonth['EquityContribution']+data_yearmonth['NETOPERATINGINCOME']+data_yearmonth['DebtService']+data_yearmonth['NetProceed']
+    ReturnUnlever=((1+np.irr(data_yearmonth['CashflowUnlever']))**12) - 1
+    ReturnLever=(1+np.irr(data_yearmonth['CashflowLever']))**12-1
+
+    data_year=data_yearmonth.groupby('Year').sum().copy()
+    data_year=data_year.reset_index()
+    data_year['ReturnUnlever']=0
+    data_year['ReturnLever']=0
+
+    data_year.loc[0,'ReturnUnlever']=ReturnUnlever
+    data_year.loc[0,'ReturnLever']=ReturnLever
+    data_year_json=data_year.to_json(orient='columns', date_format='iso')
+    data_year_json=json.loads(data_year_json)
+
+    return jsonify(data_year_json)
+
+@blueprint.route('/investors/database', methods=['GET', 'POST'])
+@login_required
+def api_investorsDatabase():
+
+    conn = db.engine.connect()
+    # vehicle = request.form['vehicle']
+    # asofdate = request.form['asofdate']
+
+    sql = f"call sp_InvestorDatabase ()"
+    data = pd.read_sql_query(sql, conn)
+ 
+    data_json = data.to_json(orient='records')
+    data_json=json.loads(data_json)
+
+    return jsonify({'data': data_json})
+
+
+@blueprint.route('/investors/history', methods=['GET', 'POST'])
+@login_required
+def api_investorsHistory():
+
+    conn = db.engine.connect()
+    # vehicle = request.form['vehicle']
+    # asofdate = request.form['asofdate']
+
+    sql = f"call sp_FundingFolders ()"
+    data = pd.read_sql_query(sql, conn)
+ 
+    data_json = data.to_json(orient='records')
+    data_json=json.loads(data_json)
+
+    return jsonify({'data': data_json})
+
+@blueprint.route('/investor/summary', methods=['POST'])
+@login_required
+def api_investorSummary():
+
+    conn = db.engine.connect()
+    investor = request.form['investor']
+
+    sql = f"select * from t_ref_Investor where InvestorID={investor}"
+    data = pd.read_sql_query(sql, conn)
+ 
+    data_json = data.to_json(orient='records')
+    data_json=json.loads(data_json)
+
+    return jsonify(data_json)    
+
+@blueprint.route('/investor/chart', methods=['POST'])
+@login_required
+def api_investorChart():
+
+    conn = db.engine.connect()
+    investor = request.form['investor']
+    investor = int(investor)
+
+    sql = f"call sp_InvestorAccountHistory({investor})"
+    data = pd.read_sql_query(sql, conn)
+    data = data.sort_values(by='FundingDate', ascending=True).copy()
+
+    data_funding=data.loc[data['Activity']=='Capital Contribution',['FundingDate','FundingAmount']].copy()
+    data_funding['CumSum']=data_funding['FundingAmount'].cumsum()
+
+    data_dvd = data.loc[data['Activity']=='Dividend',['FundingDate', 'CurrentShares','FundingAmount']].copy()
+    data_dvd['EPS'] = data_dvd['FundingAmount']/data_dvd['CurrentShares']
+
+    data_funding_json = data_funding.to_json(orient='records' , date_format='iso')
+    data_funding_json = json.loads(data_funding_json)
+
+    data_dvd_json = data_dvd.to_json(orient='records' , date_format='iso')
+    data_dvd_json = json.loads(data_dvd_json)
+    
+    return jsonify()
+
+@blueprint.route('/investor/history', methods=['GET', 'POST'])
+@login_required
+def api_investorHistory():
+
+    conn = db.engine.connect()
+    investor = request.form['investor']
+    investor = int(investor)
+    
+
+    sql = f"call sp_InvestorAccountHistory ({investor})"
+    data = pd.read_sql_query(sql, conn)
+ 
+    data_json = data.to_json(orient='records')
+    data_json=json.loads(data_json)
+
+    return jsonify({'data': data_json})

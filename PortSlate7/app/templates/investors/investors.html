@@ -1,0 +1,152 @@
+{% extends "base_site.html" %}
+
+{% block title %} Investors {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="right_col" role="main">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">        
+            <div class="x_panel">            
+                <div class="x_title" id="PageTitle"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="x_panel">
+                <div class="x_title" id="FundName"><h3>Summary</h3>
+                </div>
+                <div class="x_content">
+                    <table class="table">
+                        <!-- <thead>
+                            <tr>
+                                <th></th>
+                            </tr>
+                        </thead> -->
+                        <tbody>
+                            <tr>
+                                <td><b>Fund Inception Date</b></td>
+                                <td align="right">2014-05-04</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total Commitments</b></td>
+                                <td align="right">$500,000,000</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total Funded to Date</b></td>
+                                <td align="right">$450,000,000</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total Dividend Disbursed</b></td>
+                                <td align="right">$150,000,000</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total Redemptions</b></td>
+                                <td align="right">$150,000,000</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Total Shares Outstanding</b></td>
+                                <td align="right"></td>
+                            </tr>
+                            <tr>
+                                <td><b># of Investors</b></td>
+                                <td align="right"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="x_panel">
+                <div class="x_title"><h3>Investor Type</h3>
+                </div>
+                <div class="x_content">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="x_panel">
+                <div class="x_title"><h3>Fund Commitment %</h3>
+                </div>
+                <div class="x_content">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="x_panel">
+                <div class="x_title"><h3>Fund Redemption %</h3>
+                </div>
+                <div class="x_content">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div class="" role="tabpanel">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#tab_content1" role="tab" data-toggle="tab" aria-expanded="true"><b>Investor Database</b></a>
+                            </li>
+                            <li role="presentation"><a href="#tab_content2" role="tab" data-toggle="tab" aria-expanded="true"><b>History</b></a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <table id="datatable_investors" class="table table-striped table-bordered jambo_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Investor Name</th>
+                                            <th>Group</th>
+                                            <th>Commitment</th>
+                                            <th>Funded to Date</th>
+                                            <th>Redemption</th>
+                                            <th>Capital Balance</th>
+                                            <th>Shares</th>
+                                            <th>% Funded</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                <table id="datatable_history" class="table table-striped table-bordered jambo_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction Description</th>
+                                            <th>Date</th>
+                                            <th>Activity</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{ url_for('static', filename='build/js/investors.js') }}"></script>
+
+{% endblock javascripts %}
